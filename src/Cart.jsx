@@ -51,7 +51,7 @@ const Cart = ({ isBasketActive, toggleBasket, basket, updateBasket }) => {
                 <p>by {item.author}</p>
               </div>
               <div className='ml-auto'>
-              <label className='hidden' htmlFor="cart-quantity">Pick how many per item</label>
+                <label className='hidden' htmlFor="cart-quantity">Pick how many per item</label>
                 <select onChange={(e) => updateQuantity(e, item.id)} id='cart-quantity' className='cart__item-quantity'>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -74,7 +74,8 @@ const Cart = ({ isBasketActive, toggleBasket, basket, updateBasket }) => {
           <p>Your cart is empty</p>}
       </div>
       <footer className="cart__footer">
-        <span className='cart__total-label'>Total:</span> <span className='cart__total-price  ml-auto'>{basket.reduce((accumulator, currentValue) => accumulator + currentValue.price * currentValue.quantity, 0)}:-</span>
+        <span className='cart__total-label'>Total:</span>
+        <span className='cart__total-price  ml-auto'>{basket.reduce((accumulator, currentValue) => accumulator + currentValue.price * currentValue.quantity, 0)}:-</span>
         <Link
           className='cart__order'
           to={{
