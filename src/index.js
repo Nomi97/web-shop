@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { render } from 'react-dom';
-import './index.css';
 import Header from './Header.jsx';
 import Books from './Books.jsx'
 import './styles/buttons.scss'
 import Modal from './Modal'
+import './styles/index.css'
 import Cart from './Cart'
 import { BrowserRouter, Switch, Route, useLocation } from 'react-router-dom'
 

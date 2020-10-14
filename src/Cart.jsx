@@ -30,7 +30,7 @@ const Cart = ({ isBasketActive, toggleBasket, basket, updateBasket }) => {
   }
 
   return (
-    <div className={`cart ${isBasketActive ? 'cart--expanded' : ''} `}>
+    <aside className={`cart ${isBasketActive ? 'cart--expanded' : ''} `}>
       <header className='cart__header'>
         <h2 className='cart__header-title'>Cart</h2>
         <button className='ml-auto' type='button' onClick={() => toggleBasket(false)}>
@@ -45,13 +45,14 @@ const Cart = ({ isBasketActive, toggleBasket, basket, updateBasket }) => {
         {basket.length ?
           basket.map(item => (
             <div className='cart__item' key={item.id}>
-              <img className='cart__item-image' src={item.image} alt="" />
+              <img className='cart__item-image' src={item.image} alt="cart item" />
               <div className="cart__item-descripton">
                 <h3>{item.title}</h3>
                 <p>by {item.author}</p>
               </div>
               <div className='ml-auto'>
-                <select onChange={(e) => updateQuantity(e, item.id)} className='cart__item-quantity'>
+              <label className='hidden' htmlFor="cart-quantity">Pick how many per item</label>
+                <select onChange={(e) => updateQuantity(e, item.id)} id='cart-quantity' className='cart__item-quantity'>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -72,7 +73,7 @@ const Cart = ({ isBasketActive, toggleBasket, basket, updateBasket }) => {
           )) :
           <p>Your cart is empty</p>}
       </div>
-      <div className="cart__footer">
+      <footer className="cart__footer">
         <span className='cart__total-label'>Total:</span> <span className='cart__total-price  ml-auto'>{basket.reduce((accumulator, currentValue) => accumulator + currentValue.price * currentValue.quantity, 0)}:-</span>
         <Link
           className='cart__order'
@@ -80,8 +81,8 @@ const Cart = ({ isBasketActive, toggleBasket, basket, updateBasket }) => {
             pathname: `/modal`,
             state: { background: location }
           }}>Order</Link>
-      </div>
-    </div>
+      </footer>
+    </aside>
   )
 }
 

@@ -24,10 +24,6 @@
     }
   }
 
-  &__button:focus {
-    outline: none;
-  }
-
   &__img {
     max-width: 100%;
     max-height: 100%;
@@ -47,8 +43,4 @@
     background: #1fab2e;
     color: #fff;
   }
-}
-
-.filter__button:focus {
-  outline: none;
 }

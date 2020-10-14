@@ -8,7 +8,7 @@ const Header = ({ basket, toggleBasket, isBasketActive }) => (
     <nav>
       <ul>
         <li><Link to='/'>Books</Link></li>
-        <li><button type='button' onClick={() => toggleBasket(!isBasketActive)} to='/checkout'>
+        <li><button aria-label='cart icon' type='button' onClick={() => toggleBasket(!isBasketActive)} to='/checkout'>
           <svg className='header__cart-icon' viewBox="0 0 40 40">
             <g fill="none" fillRule="evenodd" stroke="currentColor"><circle cx="24.039" cy="26.442" r="1.346" fill="#fff" strokeWidth="1.5" />
               <circle cx="17.27" cy="26.442" r="1.346" fill="currentColor" strokeWidth="1.5" />

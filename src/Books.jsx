@@ -43,34 +43,35 @@ const Books = ({ basket, updateBasket }) => {
   console.log(basket);
 
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col text-center">
-          <h3 className='mb-3'>Categories</h3>
-          {categories.map(category =>
-            <button className={`filter__button mb-3${activeCategories.find(list => list === category) ? ' filter__button--active' : ''} ml-3`} key={category} onClick={() => toggleItem(activeCategories, category, updateActiveCategories)}>{category}</button>
-          )}
+    <main>
+      <div className="container mt-5">
+        <div className="row">
+          <div className="col text-center">
+            <h3 className='mb-3'>Categories</h3>
+            {categories.map(category =>
+              <button className={`filter__button mb-3${activeCategories.find(list => list === category) ? ' filter__button--active' : ''} ml-3`} key={category} onClick={() => toggleItem(activeCategories, category, updateActiveCategories)}>{category}</button>
+            )}
+          </div>
+        </div>
+        <div className="row justify-content-center justify-content-sm-start mt-5">
+          {booksArr.length ?
+            booksArr.map((book) => (
+              <div className="col-6 col-md-3" key={book.id}>
+                <div className="book">
+                  <img className='book__img' src={book.image} alt="" />
+                  <h3 className='book__title'>{book.title}</h3>
+                  <p className='book__description'>{book.description}</p>
+                  <button type='button' className={`book__button ${basket.find(item => item.id === book.id) ? 'book__button--active' : ''}`} onClick={() => addToBasket(book)}>{basket.find(item => item.id === book.id) ? 'Remove' : 'Add'}</button>
+                </div>
+              </div>
+            ))
+            :
+            <div className="col">
+              <h4>unfortunately we don't have any books available.</h4>
+            </div>}
         </div>
       </div>
-      <div className="row justify-content-center justify-content-sm-start mt-5">
-        {booksArr.length ?
-          booksArr.map((book) => (
-            <div className="col-6 col-md-3" key={book.id}>
-              <div className="book">
-                <img className='book__img' src={book.image} alt="" />
-                <h3 className='book__title'>{book.title}</h3>
-                <p className='book__description'>{book.description}</p>
-                <button type='button' className={`book__button ${basket.find(item => item.id === book.id) ? 'book__button--active' : ''}`} onClick={() => addToBasket(book)}>{basket.find(item => item.id === book.id) ? 'Remove' : 'Add'}</button>
-              </div>
-            </div>
-          ))
-          :
-          <div className="col">
-            <h4>unfortunately we don't have any books available.</h4>
-          </div>}
-      </div>
-
-    </div>
+    </main>
   )
 }
 export default Books;
